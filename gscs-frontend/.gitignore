@@ -1,15 +1,24 @@
 # Logs
 logs
 *.log
+*.err
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+dev-server.*
+vite-dev.*
 
+# Build output
 node_modules
 dist
 dist-ssr
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Environment files
 *.local
 
 # Editor directories and files
@@ -22,3 +31,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Design verification screenshots
+verification/

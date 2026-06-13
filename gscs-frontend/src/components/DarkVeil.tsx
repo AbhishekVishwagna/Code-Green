@@ -118,6 +118,10 @@ export default function DarkVeil({
       const w = parent.clientWidth;
       const h = parent.clientHeight;
       renderer.setSize(w * resolutionScale, h * resolutionScale);
+      // OGL's setSize writes inline px styles (e.g. 80% of viewport) that shrink the canvas.
+      // Override with explicit full-viewport px so the canvas fills the container.
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
       program.uniforms.uResolution.value.set(w, h);
     };
 

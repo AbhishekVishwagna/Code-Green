@@ -64,11 +64,32 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: hsl(var(--background));
+    box-sizing: border-box;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+  * {
+    @apply border-border;
+    box-sizing: border-box;
   }
 }
 
