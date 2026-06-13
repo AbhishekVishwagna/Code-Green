@@ -41,7 +41,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https: wss:; worker-src 'self' blob:; frame-src https://*.browserpod.dev; frame-ancestors 'none'; object-src 'none'; base-uri 'self';"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval' https://va.vercel-scripts.com https://rt.browserpod.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https: wss:; worker-src 'self' blob: https://rt.browserpod.io; frame-src https://*.browserpod.dev; frame-ancestors 'none'; object-src 'none'; base-uri 'self';"
         }
       ]
     }

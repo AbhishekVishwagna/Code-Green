@@ -92,6 +92,21 @@ async function _boot(termEl: HTMLElement): Promise<PodService> {
     throw new Error("BrowserPod API key not set. Add VITE_BP_APIKEY to .env.local and restart Vite.");
   }
 
+  // BrowserPod SDK loads its runtime from https://rt.browserpod.io at import time.
+  // If that fetch was blocked (CSP, COEP, or network), the package exports null.
+  if (!BrowserPod) {
+    const isolated = typeof window !== "undefined" && window.crossOriginIsolated;
+    throw new Error(
+      isolated
+        ? "BrowserPod SDK failed to load — rt.browserpod.io may be blocked by a Content Security Policy. " +
+          "Check the browser console for a blocked resource error."
+        : "Page is not cross-origin isolated (crossOriginIsolated=false). " +
+          "BrowserPod requires Cross-Origin-Opener-Policy: same-origin and " +
+          "Cross-Origin-Embedder-Policy: require-corp headers. " +
+          "Make sure you are using the Vite dev server (npm run dev), not opening the HTML file directly."
+    );
+  }
+
   // 1. Boot the pod
   let pod: InstanceType<typeof BrowserPod>;
   try {
